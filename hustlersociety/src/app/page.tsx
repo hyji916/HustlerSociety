@@ -11,14 +11,24 @@ export default function LandingPage(): JSX.Element {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex flex-col">
+    <div
+      className="min-h-screen flex flex-col relative"
+      style={{
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('/landingpagebg.png')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       {/* Main Content */}
       <div className="flex-1 flex flex-col items-center justify-center px-4">
-        {/* Brand Name */}
+        {/* Brand Logo */}
         <div className="mb-16 text-center">
-          <h1 className="text-6xl md:text-8xl font-black text-white tracking-wider mb-4">
-            HUSTLER SOCIETY
-          </h1>
+          <img
+            src="/hustlersocietytransparentlogo.png"
+            alt="Hustler Society"
+            className="mx-auto mb-4 h-48 md:h-64 lg:h-72 w-auto"
+          />
           <div className="flex items-center justify-center gap-2 text-purple-300">
             <Globe className="w-6 h-6" />
             <p className="text-xl font-light">Select Your Language</p>
@@ -29,32 +39,79 @@ export default function LandingPage(): JSX.Element {
         <div className="flex flex-col sm:flex-row gap-6 mb-8">
           <button
             onClick={() => handleLanguageSelect("spanish")}
-            className="group relative bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white px-12 py-6 rounded-2xl font-bold text-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-emerald-500/50"
+            className="group relative bg-black/50 hover:bg-black/70 text-white border-2 border-gray-300 px-16 py-4 rounded-2xl font-bold text-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-black/50"
           >
             <div className="flex items-center gap-4">
-              <span className="text-4xl">🇪🇸</span>
+              <svg className="w-10 h-10 rounded" viewBox="0 0 36 24">
+                <rect width="12" height="24" fill="#006847" />
+                <rect x="12" width="12" height="24" fill="#FFF" />
+                <rect x="24" width="12" height="24" fill="#CE1126" />
+                <g transform="translate(18, 12)">
+                  <circle r="3" fill="#8B4513" />
+                  <path
+                    d="M-1.5,-1 L-1.5,1 L1.5,1 L1.5,-1 L0.5,-1 L0.5,0 L-0.5,0 L-0.5,-1 Z"
+                    fill="#8B4513"
+                  />
+                  <ellipse cx="0" cy="-2" rx="2" ry="1.5" fill="#8B4513" />
+                </g>
+              </svg>
               <span>Spanish</span>
             </div>
           </button>
 
           <button
             onClick={() => handleLanguageSelect("english")}
-            className="group relative bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white px-12 py-6 rounded-2xl font-bold text-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-emerald-500/50"
+            className="group relative bg-black/50 hover:bg-black/70 text-white border-2 border-gray-300 px-16 py-4 rounded-2xl font-bold text-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-black/50"
           >
             <div className="flex items-center gap-4">
-              <span className="text-4xl">🇺🇸</span>
+              <svg className="w-10 h-10 rounded" viewBox="0 0 36 24">
+                <rect width="36" height="24" fill="#B22234" />
+                <rect y="2.77" width="36" height="1.85" fill="#FFF" />
+                <rect y="6.46" width="36" height="1.85" fill="#FFF" />
+                <rect y="10.15" width="36" height="1.85" fill="#FFF" />
+                <rect y="13.85" width="36" height="1.85" fill="#FFF" />
+                <rect y="17.54" width="36" height="1.85" fill="#FFF" />
+                <rect y="21.23" width="36" height="1.85" fill="#FFF" />
+                <rect width="14.4" height="12.92" fill="#3C3B6E" />
+                <g fill="#FFF">
+                  <circle cx="2.4" cy="2.15" r="0.6" />
+                  <circle cx="4.8" cy="2.15" r="0.6" />
+                  <circle cx="7.2" cy="2.15" r="0.6" />
+                  <circle cx="9.6" cy="2.15" r="0.6" />
+                  <circle cx="12" cy="2.15" r="0.6" />
+                  <circle cx="3.6" cy="3.69" r="0.6" />
+                  <circle cx="6" cy="3.69" r="0.6" />
+                  <circle cx="8.4" cy="3.69" r="0.6" />
+                  <circle cx="10.8" cy="3.69" r="0.6" />
+                  <circle cx="2.4" cy="5.23" r="0.6" />
+                  <circle cx="4.8" cy="5.23" r="0.6" />
+                  <circle cx="7.2" cy="5.23" r="0.6" />
+                  <circle cx="9.6" cy="5.23" r="0.6" />
+                  <circle cx="12" cy="5.23" r="0.6" />
+                  <circle cx="3.6" cy="6.77" r="0.6" />
+                  <circle cx="6" cy="6.77" r="0.6" />
+                  <circle cx="8.4" cy="6.77" r="0.6" />
+                  <circle cx="10.8" cy="6.77" r="0.6" />
+                  <circle cx="2.4" cy="8.31" r="0.6" />
+                  <circle cx="4.8" cy="8.31" r="0.6" />
+                  <circle cx="7.2" cy="8.31" r="0.6" />
+                  <circle cx="9.6" cy="8.31" r="0.6" />
+                  <circle cx="12" cy="8.31" r="0.6" />
+                  <circle cx="3.6" cy="9.85" r="0.6" />
+                  <circle cx="6" cy="9.85" r="0.6" />
+                  <circle cx="8.4" cy="9.85" r="0.6" />
+                  <circle cx="10.8" cy="9.85" r="0.6" />
+                  <circle cx="2.4" cy="11.38" r="0.6" />
+                  <circle cx="4.8" cy="11.38" r="0.6" />
+                  <circle cx="7.2" cy="11.38" r="0.6" />
+                  <circle cx="9.6" cy="11.38" r="0.6" />
+                  <circle cx="12" cy="11.38" r="0.6" />
+                </g>
+              </svg>
               <span>English</span>
             </div>
           </button>
         </div>
-      </div>
-
-      {/* Bottom Left Brand */}
-      <div className="absolute bottom-8 left-8 flex items-center gap-3">
-        <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-          <Globe className="w-6 h-6 text-white" />
-        </div>
-        <span className="text-white font-bold text-xl">HUSTLER SOCIETY</span>
       </div>
 
       {/* Footer Links */}
@@ -72,20 +129,6 @@ export default function LandingPage(): JSX.Element {
             className="hover:text-emerald-400 transition-colors duration-200"
           >
             Privacy Policy
-          </a>
-          <span className="text-gray-600">|</span>
-          <a
-            href="#"
-            className="hover:text-emerald-400 transition-colors duration-200"
-          >
-            Affiliate Program
-          </a>
-          <span className="text-gray-600">|</span>
-          <a
-            href="mailto:info@hustlersociety.com"
-            className="hover:text-emerald-400 transition-colors duration-200"
-          >
-            info@hustlersociety.com
           </a>
         </div>
       </footer>
