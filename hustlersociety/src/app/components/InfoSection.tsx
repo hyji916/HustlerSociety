@@ -1,0 +1,185 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+
+const InfoSection = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth < 768);
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
+  const scrollToCalendly = () => {
+    const bookingSection = document.querySelector(".ghl-booking-widget");
+    if (bookingSection) {
+      bookingSection.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  };
+
+  // 🧩 All your info blocks live here
+  const infoBlocks = [
+    {
+      title: "How Luke Is Hitting $20k Months At 18 Years Old",
+      description: `"Since joining, I went from knowing nothing about online business to signing multiple clients, charging up to $2k retainers, and shifting my mindset from thinking small to thinking abundantly."`,
+      videoUrl: "https://www.youtube.com/embed/YOUR_VIDEO_ID_1",
+      reverse: false,
+    },
+    {
+      title: "How Jose Graduated High School And Makes $60k/Month",
+      description: `"Since joining, I scaled from 10k months to hitting 20k+, built AI-powered funnels for clients, and the community support fast-tracked my growth far beyond what I could've done alone."`,
+      videoUrl: "https://www.youtube.com/embed/YOUR_VIDEO_ID_2",
+      reverse: false,
+    },
+    {
+      title: "How Sarah Built A 6-Figure Agency In Under A Year",
+      description: `"I never thought I could replace my 9-5 this quickly. The mentorship and frameworks gave me everything I needed to turn freelancing into a real business."`,
+      videoUrl: "https://www.youtube.com/embed/YOUR_VIDEO_ID_3",
+      reverse: false,
+    },
+  ];
+
+  return (
+    <>
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.4s ease-out;
+        }
+      `}</style>
+
+      <section className="bg-black text-white py-0 md:py-0 px-5 md:px-12 space-y-8">
+        {infoBlocks.map((info, index) => (
+          <div key={index} className="animate-fadeIn">
+            {/* Desktop View */}
+            {!isMobile && (
+              <div
+                className="max-w-6xl mx-auto border border-zinc-700 rounded-2xl overflow-hidden"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, rgba(40, 0, 0, 0.4), rgba(0, 0, 0, 0.95))",
+                }}
+              >
+                <div
+                  className={`flex items-center justify-between gap-12 p-8 ${
+                    info.reverse ? "flex-row-reverse" : "flex-row"
+                  }`}
+                >
+                  {/* Text */}
+                  <div className="flex-1 space-y-6">
+                    <h2 className="text-2xl md:text-3xl font-extrabold">
+                      {info.title}
+                    </h2>
+                    <p className="text-gray-400 text-lg leading-relaxed">
+                      {info.description}
+                    </p>
+                  </div>
+
+                  {/* Video */}
+                  <div className="flex-1">
+                    <div className="aspect-video rounded-lg overflow-hidden shadow-lg">
+                      <iframe
+                        src={info.videoUrl}
+                        title={info.title}
+                        className="w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      ></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Mobile View */}
+            {isMobile && (
+              <div
+                className="max-w-md mx-auto border border-zinc-700 rounded-2xl overflow-hidden"
+                style={{
+                  background:
+                    "linear-gradient(to bottom, rgba(40, 0, 0, 0.4), rgba(0, 0, 0, 0.95))",
+                }}
+              >
+                <div className="p-6 space-y-6">
+                  {/* Video on top */}
+                  <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg">
+                    <iframe
+                      src={info.videoUrl}
+                      title={info.title}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+
+                  {/* Text below */}
+                  <div className="space-y-4">
+                    <h2 className="text-xl font-extrabold">{info.title}</h2>
+                    <p className="text-gray-400 text-base leading-relaxed">
+                      {info.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+
+        {/* Apply CTA Button - Hero Style */}
+        <div className="max-w-2xl mx-auto pt-8 text-center animate-fadeIn">
+          <button
+            onClick={scrollToCalendly}
+            className="text-base md:text-xl font-bold py-2 px-16 rounded-full shadow-2xl transition hover:opacity-90 cursor-pointer border-none mb-4 uppercase tracking-tight"
+            style={{
+              background: "white",
+              color: "black",
+            }}
+            aria-label="Apply now"
+          >
+            <strong>Apply Now</strong>
+          </button>
+
+          {/* Social proof */}
+          <div className="flex items-center justify-center gap-2">
+            <div className="flex -space-x-2">
+              {[1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className="w-5 h-5 rounded-full border-2 border-gray-900"
+                  style={{
+                    background: `linear-gradient(135deg, #${Math.floor(
+                      Math.random() * 16777215
+                    ).toString(16)} 0%, #${Math.floor(
+                      Math.random() * 16777215
+                    ).toString(16)} 100%)`,
+                  }}
+                />
+              ))}
+            </div>
+            <span className="text-gray-400 text-sm">
+              Join Over <strong className="text-white">100+ People</strong>{" "}
+              Worldwide
+            </span>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default InfoSection;
