@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import HeroEnglish from "../components/HeroEnglish"; // Adjust relative to the current file
 import ApplySection from "../components/ApplySection";
