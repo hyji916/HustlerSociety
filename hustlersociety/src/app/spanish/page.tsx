@@ -4,7 +4,7 @@ import ApplySection from "../components/ApplySection";
 import InfoSection from "../components/InfoSection";
 import TestimonialSection from "../components/TestimonalSection";
 
-export default function EnglishPage(): JSX.Element {
+export default function EnglishPage() {
   return (
     <main>
       <HeroEnglish />
