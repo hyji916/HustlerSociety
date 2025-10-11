@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Globe } from "lucide-react";
+import Image from "next/image";
 
 type Language = "spanish" | "english";
 
@@ -24,7 +25,7 @@ export default function LandingPage(): JSX.Element {
       <div className="flex-1 flex flex-col items-center justify-center px-4">
         {/* Brand Logo */}
         <div className="mb-16 text-center">
-          <img
+          <Image
             src="/hustlersocietytransparentlogo.png"
             alt="Hustler Society"
             className="mx-auto mb-4 h-48 md:h-64 lg:h-72 w-auto"
