@@ -6,7 +6,7 @@ import Image from "next/image";
 
 type Language = "spanish" | "english";
 
-export default function LandingPage(): JSX.Element {
+export default function LandingPage() {
   const handleLanguageSelect = (language: Language): void => {
     window.location.href = `/${language}`;
   };
@@ -28,6 +28,8 @@ export default function LandingPage(): JSX.Element {
           <Image
             src="/hustlersocietytransparentlogo.png"
             alt="Hustler Society"
+            width={288}
+            height={288}
             className="mx-auto mb-4 h-48 md:h-64 lg:h-72 w-auto"
           />
           <div className="flex items-center justify-center gap-2 text-purple-300">
