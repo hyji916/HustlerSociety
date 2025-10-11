@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 const ApplySection = () => {
@@ -18,9 +18,12 @@ const ApplySection = () => {
     lastName: false,
     phone: false,
   });
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    // Set initial state after mount
+    setIsMobile(window.innerWidth < 768);
+
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -130,6 +133,8 @@ const ApplySection = () => {
               <Image
                 src="https://images.unsplash.com/photo-1617654112368-307921291f42?w=800&auto=format&fit=crop"
                 alt="Luxury car"
+                width={800}
+                height={300}
                 className="w-full h-48 object-cover rounded-t-lg"
               />
             </div>
