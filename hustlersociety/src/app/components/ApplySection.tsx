@@ -104,7 +104,7 @@ const ApplySection = () => {
           <>
             <div>
               <label className="block text-sm font-medium text-white mb-2">
-                1. What's a good email to reach you at?*
+                1. What&apos;s a good email to reach you at?*
               </label>
               <input
                 type="email"
@@ -126,7 +126,7 @@ const ApplySection = () => {
         {formStep === 2 && (
           <>
             <div className="mb-6">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1617654112368-307921291f42?w=800&auto=format&fit=crop"
                 alt="Luxury car"
                 className="w-full h-48 object-cover rounded-t-lg"
@@ -247,7 +247,7 @@ const ApplySection = () => {
               >
                 <span className="text-white font-bold mr-2">A</span>
                 <span className="text-red-500">
-                  $0-$1,500 (Can't afford it, sorry)
+                  $0-$1,500 (Can&apos;t afford it, sorry)
                 </span>
               </button>
 
@@ -289,7 +289,7 @@ const ApplySection = () => {
               >
                 <span className="text-white font-bold mr-2">D</span>
                 <span className="text-red-500">
-                  $5,000+ (I'm looking for as much help as possible)
+                  $5,000+ (I&apos;m looking for as much help as possible)
                 </span>
               </button>
             </div>
@@ -352,7 +352,7 @@ const ApplySection = () => {
               >
                 <span className="text-white font-bold mr-2">A</span>
                 <span className="text-red-500">
-                  Yes, i'll pick up when you guys call me
+                  Yes, I&apos;ll pick up when you guys call me
                 </span>
               </button>
 
@@ -368,7 +368,9 @@ const ApplySection = () => {
                 }`}
               >
                 <span className="text-white font-bold mr-2">B</span>
-                <span className="text-red-500">No, i'll be unresponsive</span>
+                <span className="text-red-500">
+                  No, I&apos;ll be unresponsive
+                </span>
               </button>
             </div>
 

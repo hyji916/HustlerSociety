@@ -106,7 +106,7 @@ const TestimonialSection = () => {
                   {/* Quote */}
                   <div className="p-6">
                     <p className="text-gray-300 italic text-base leading-relaxed">
-                      "{testimonial.quote}"
+                      &quot;{testimonial.quote}&quot;
                     </p>
                   </div>
                 </div>
@@ -133,7 +133,7 @@ const TestimonialSection = () => {
                   {/* Quote */}
                   <div className="p-6">
                     <p className="text-gray-300 italic text-base leading-relaxed">
-                      "{testimonial.quote}"
+                      &quot;{testimonial.quote}&quot;
                     </p>
                   </div>
                 </div>
