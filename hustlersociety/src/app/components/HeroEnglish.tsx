@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import WistiaPlayer from "./WistiaPlayer";
 
 export default function HeroEnglish() {
@@ -26,15 +26,17 @@ export default function HeroEnglish() {
     };
   }, []);
 
-  const scrollToCalendly = () => {
-    const bookingSection = document.querySelector(".ghl-booking-widget");
-    if (bookingSection) {
-      bookingSection.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
+  const scrollToCalendly = useCallback(() => {
+    if (typeof document !== "undefined") {
+      const bookingSection = document.querySelector(".ghl-booking-widget");
+      if (bookingSection) {
+        bookingSection.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
+      }
     }
-  };
+  }, []);
 
   return (
     <section
@@ -80,7 +82,7 @@ export default function HeroEnglish() {
           style={{
             background: "rgba(220, 38, 38, 0.15)",
             border: "1px solid rgba(220, 38, 38, 0.3)",
-            maxWidth: "90%", // keep responsive control
+            maxWidth: "90%",
           }}
         >
           <div
@@ -130,9 +132,9 @@ export default function HeroEnglish() {
         <div
           className="relative mb-4 custom-video-container"
           style={{
-            border: "4px solid rgba(156,163,175,0.35)", // gray-400 with transparency
+            border: "4px solid rgba(156,163,175,0.35)",
             borderRadius: "18px",
-            background: "rgba(17, 24, 39, 0.35)", // matches dark bg with transparency
+            background: "rgba(17, 24, 39, 0.35)",
             boxShadow: "0 2px 16px 0 rgba(0,0,0,0.12)",
             overflow: "hidden",
           }}
@@ -185,20 +187,20 @@ export default function HeroEnglish() {
 
       <style jsx>{`
         h1 {
-          font-size: 24px; /* smaller for mobile */
+          font-size: 24px;
           line-height: 1.15;
         }
 
         @media (min-width: 768px) {
           h1 {
-            font-size: 34px; /* tablet */
+            font-size: 34px;
             line-height: 1.1;
           }
         }
 
         @media (min-width: 1024px) {
           h1 {
-            font-size: 44px; /* desktop */
+            font-size: 44px;
             line-height: 1.05;
           }
         }
