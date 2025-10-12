@@ -5,6 +5,7 @@ import HeroEnglish from "../components/HeroEnglish"; // Adjust relative to the c
 import ApplySection from "../components/ApplySection";
 import InfoSection from "../components/InfoSection";
 import TestimonialSection from "../components/TestimonalSection";
+import GallerySection from "../components/GallerySectionEnglish";
 
 export default function EnglishPage() {
   return (
@@ -14,6 +15,7 @@ export default function EnglishPage() {
       <ApplySection />
       <InfoSection />
       <TestimonialSection />
+      <GallerySection />
     </main>
   );
 }

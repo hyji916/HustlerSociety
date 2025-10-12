@@ -1,30 +1,32 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import { useCallback } from "react";
 import WistiaPlayer from "./WistiaPlayer";
 
 export default function HeroEnglish() {
-  useEffect(() => {
-    const playerScript = document.createElement("script");
-    playerScript.src = "https://fast.wistia.com/player.js";
-    playerScript.async = true;
-    document.head.appendChild(playerScript);
+  // NOTE: Wistia scripts now loaded in layout.tsx instead
+  // Commented out to avoid duplicate script loading which causes "Failed to fetch" errors
+  // useEffect(() => {
+  //   const playerScript = document.createElement("script");
+  //   playerScript.src = "https://fast.wistia.com/player.js";
+  //   playerScript.async = true;
+  //   document.head.appendChild(playerScript);
 
-    const embedScript = document.createElement("script");
-    embedScript.src = "https://fast.wistia.com/embed/z3z253lf9h.js";
-    embedScript.async = true;
-    embedScript.type = "module";
-    document.head.appendChild(embedScript);
+  //   const embedScript = document.createElement("script");
+  //   embedScript.src = "https://fast.wistia.com/embed/z3z253lf9h.js";
+  //   embedScript.async = true;
+  //   embedScript.type = "module";
+  //   document.head.appendChild(embedScript);
 
-    return () => {
-      if (playerScript.parentNode) {
-        playerScript.parentNode.removeChild(playerScript);
-      }
-      if (embedScript.parentNode) {
-        embedScript.parentNode.removeChild(embedScript);
-      }
-    };
-  }, []);
+  //   return () => {
+  //     if (playerScript.parentNode) {
+  //       playerScript.parentNode.removeChild(playerScript);
+  //     }
+  //     if (embedScript.parentNode) {
+  //       embedScript.parentNode.removeChild(embedScript);
+  //     }
+  //   };
+  // }, []);
 
   const scrollToCalendly = useCallback(() => {
     if (typeof document !== "undefined") {
@@ -168,6 +170,7 @@ export default function HeroEnglish() {
               <div
                 key={i}
                 className="w-5 h-5 rounded-full border-2 border-gray-900"
+                suppressHydrationWarning
                 style={{
                   background: `linear-gradient(135deg, #${Math.floor(
                     Math.random() * 16777215

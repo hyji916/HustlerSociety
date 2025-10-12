@@ -163,6 +163,7 @@ const TestimonialSection = () => {
                 <div
                   key={i}
                   className="w-5 h-5 rounded-full border-2 border-gray-900"
+                  suppressHydrationWarning
                   style={{
                     background: `linear-gradient(135deg, #${Math.floor(
                       Math.random() * 16777215
