@@ -12,15 +12,7 @@ const wistiaMedia = [
 
 export default function GallerySection() {
   return (
-    <section
-      className="py-8 md:py-12 text-white relative"
-      style={{
-        backgroundImage: `url('/backgroundpaper.png')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
+    <section className="py-8 md:py-12 text-white relative bg-black">
       <div className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-2xl md:text-3xl font-extrabold mb-2">
           <span
