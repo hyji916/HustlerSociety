@@ -26,7 +26,7 @@ const TestimonialSection = () => {
     {
       videoUrl: "https://www.youtube.com/embed/YOUR_VIDEO_ID_1",
       quote:
-        "I joined with zero knowledge on ads and the course has helped me tremendously",
+        "I joined with zero knowledge on ads and the course has helped me tremendously I joined with zero knowledge on ads and the course has helped me tremendously I joined with zero knowledge on ads and the course has helped me tremendously I joined with zero knowledge on ads and the course has helped me tremendously",
     },
     {
       videoUrl: "https://www.youtube.com/embed/YOUR_VIDEO_ID_2",
@@ -94,11 +94,11 @@ const TestimonialSection = () => {
                   className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden animate-fadeIn"
                 >
                   {/* Video */}
-                  <div className="aspect-[9/16] relative">
+                  <div className="relative w-full max-h-[400px] min-h-[300px] overflow-hidden">
                     <iframe
                       src={testimonial.videoUrl}
                       title={`Testimonial ${index + 1}`}
-                      className="w-full h-full"
+                      className="w-full h-[400px]"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     ></iframe>
@@ -121,11 +121,11 @@ const TestimonialSection = () => {
                   className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden animate-fadeIn max-w-md mx-auto"
                 >
                   {/* Video */}
-                  <div className="aspect-[9/16] relative">
+                  <div className="relative w-full max-h-[400px] min-h-[300px] overflow-hidden">
                     <iframe
                       src={testimonial.videoUrl}
                       title={`Testimonial ${index + 1}`}
-                      className="w-full h-full"
+                      className="w-full h-[400px]"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     ></iframe>
