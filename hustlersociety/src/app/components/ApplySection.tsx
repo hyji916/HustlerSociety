@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const ApplySection = () => {
+  const router = useRouter();
   const [showForm, setShowForm] = useState(false);
   const [formStep, setFormStep] = useState(1);
   const [email, setEmail] = useState("");
@@ -37,7 +39,7 @@ const ApplySection = () => {
     setShowForm(false);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = useCallback(() => {
     if (formStep === 1) {
       if (email) {
         setFormStep(2);
@@ -68,13 +70,15 @@ const ApplySection = () => {
           budget,
           phoneCommitment,
         });
+        // Redirect to application-approved page
+        router.push("/application-approved");
       } else {
         setShowPhoneError(true);
       }
     }
-  };
+  }, [formStep, email, firstName, lastName, phoneNumber, budget, phoneCommitment, router]);
 
-  const handleBack = () => {
+  const handleBack = useCallback(() => {
     if (formStep === 2) {
       setFormStep(1);
       setErrors({ firstName: false, lastName: false, phone: false });
@@ -84,9 +88,9 @@ const ApplySection = () => {
       setFormStep(3);
       setShowPhoneError(false);
     }
-  };
+  }, [formStep]);
 
-  const ApplyForm = () => {
+  const ApplyForm = useMemo(() => {
     const totalSteps = 4;
     const progressPercentage = (formStep / totalSteps) * 100;
 
@@ -398,7 +402,19 @@ const ApplySection = () => {
         )}
       </div>
     );
-  };
+  }, [
+    formStep,
+    email,
+    firstName,
+    lastName,
+    phoneNumber,
+    budget,
+    phoneCommitment,
+    errors,
+    showPhoneError,
+    handleSubmit,
+    handleBack,
+  ]);
 
   return (
     <>
@@ -472,7 +488,7 @@ const ApplySection = () => {
                     </p>
                   </div>
                 ) : (
-                  <ApplyForm />
+                  ApplyForm
                 )}
               </div>
             </div>
@@ -524,7 +540,7 @@ const ApplySection = () => {
                   </div>
                   <div className="flex-1 flex items-start justify-center px-6 pb-12 pt-4">
                     <div className="w-full max-w-md">
-                      <ApplyForm />
+                      {ApplyForm}
                     </div>
                   </div>
                 </div>
