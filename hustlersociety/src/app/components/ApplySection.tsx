@@ -439,7 +439,7 @@ const ApplySection = () => {
           </h2>
 
           {!isMobile && (
-            <div className="border-2 border-white p-8 relative min-h-[480px] flex items-center justify-center">
+            <div className="border-2 border-white p-12 relative min-h-[640px] flex items-center justify-center">
               <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-white -translate-x-1 -translate-y-1" />
               <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-white translate-x-1 -translate-y-1" />
               <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-white -translate-x-1 translate-y-1" />
@@ -480,7 +480,7 @@ const ApplySection = () => {
 
           {isMobile && (
             <>
-              <div className="border-2 border-white p-8 relative min-h-[320px] flex items-center justify-center">
+              <div className="border-2 border-white p-8 relative min-h-[800px] flex items-center justify-center">
                 <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-white -translate-x-1 -translate-y-1" />
                 <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-white translate-x-1 -translate-y-1" />
                 <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-white -translate-x-1 translate-y-1" />
