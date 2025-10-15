@@ -1,16 +1,21 @@
 "use client";
 
 import { Marquee } from "@/components/ui/marquee";
-import WistiaPlayer from "./WistiaPlayer";
+import Image from "next/image";
+import { useState } from "react";
 
-const wistiaMedia = [
-  // Replace these with real Wistia media ids or extend the list
-  "vhrbskdj19",
-  "wger5gw516",
-  "w1ds4gqk14",
+const galleryImages = [
+  // Replace these with your actual image paths
+  "/backgroundpaper.Png",
+  "/backgroundpaper.Png",
+  "/backgroundpaper.Png",
+  "/backgroundpaper.Png",
+  "/backgroundpaper.Png",
 ];
 
 export default function GallerySection() {
+  const [isPaused, setIsPaused] = useState(false);
+
   return (
     <section className="py-8 md:py-12 text-white relative bg-black">
       <div className="max-w-6xl mx-auto px-4 text-center">
@@ -40,21 +45,33 @@ export default function GallerySection() {
           our space.
         </p>
 
-        <div className="relative">
+        <div
+          className="relative"
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+        >
           {/* Left fade overlay */}
           <div className="absolute left-0 top-0 bottom-0 w-32 md:w-48 bg-gradient-to-r from-black/80 to-transparent z-10 pointer-events-none" />
 
           {/* Right fade overlay */}
           <div className="absolute right-0 top-0 bottom-0 w-32 md:w-48 bg-gradient-to-l from-black/80 to-transparent z-10 pointer-events-none" />
 
-          <Marquee pauseOnHover className="[--duration:20s]">
-            {wistiaMedia.map((id) => (
+          <Marquee
+            pauseOnHover
+            className={`[--duration:20s] ${isPaused ? "[&>*]:[animation-play-state:paused]" : ""}`}
+          >
+            {galleryImages.map((src, index) => (
               <div
-                key={id}
-                className="w-64 md:w-80 aspect-video overflow-hidden rounded shadow-lg mx-2"
+                key={index}
+                className="w-64 md:w-80 aspect-video overflow-hidden rounded shadow-lg mx-2 relative"
               >
-                {/* Use the existing WistiaPlayer wrapper for consistency */}
-                <WistiaPlayer media-id={id} className="w-full h-full" />
+                <Image
+                  src={src}
+                  alt={`Gallery image ${index + 1}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 256px, 320px"
+                />
               </div>
             ))}
           </Marquee>
