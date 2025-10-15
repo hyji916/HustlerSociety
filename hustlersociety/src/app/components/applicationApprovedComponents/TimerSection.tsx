@@ -46,7 +46,7 @@ export default function TimerSection() {
               className="text-xs md:text-base font-bold uppercase tracking-wide px-2 md:px-4 py-0.5 md:py-1 rounded-full whitespace-nowrap"
               style={{
                 color: "white",
-                background: "#018DFB",
+                background: "#dc2626",
                 border: "none",
               }}
             >
@@ -63,11 +63,11 @@ export default function TimerSection() {
 
         {/* Main Headline */}
         <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white mb-4 md:mb-8 leading-tight px-2">
-          <span style={{ color: "#018DFB" }}>ATTENTION:</span>{" "}
+          <span style={{ color: "#dc2626" }}>ATTENTION:</span>{" "}
           <span>YOU ARE GOING TO RECEIVE A </span>
           <Highlighter
             action="underline"
-            color="#018DFB"
+            color="#dc2626"
             strokeWidth={8}
             animationDuration={800}
             padding={0}

@@ -35,7 +35,7 @@ export default function GallerySection() {
           </span>{" "}
           <span style={{ whiteSpace: "nowrap" }}>
             <span>at&nbsp;</span>
-            <span style={{ color: "#018DFB", WebkitTextFillColor: "#018DFB" }}>
+            <span style={{ color: "#dc2626", WebkitTextFillColor: "#dc2626" }}>
               The Lab
             </span>
           </span>
@@ -58,7 +58,9 @@ export default function GallerySection() {
 
           <Marquee
             pauseOnHover
-            className={`[--duration:20s] ${isPaused ? "[&>*]:[animation-play-state:paused]" : ""}`}
+            className={`[--duration:20s] ${
+              isPaused ? "[&>*]:[animation-play-state:paused]" : ""
+            }`}
           >
             {galleryImages.map((src, index) => (
               <div
