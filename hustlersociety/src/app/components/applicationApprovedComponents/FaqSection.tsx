@@ -39,10 +39,10 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="bg-black px-4 py-12">
+    <section className="bg-black px-4 py-8 md:py-12">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white text-center mb-12">
+        <h2 className="text-xl md:text-3xl lg:text-4xl font-extrabold text-white text-center mb-6 md:mb-12 leading-tight">
           <Highlighter
             action="underline"
             color="#018DFB"
@@ -52,17 +52,17 @@ export default function FaqSection() {
           >
             STEP 2:
           </Highlighter>{" "}
-          GO THROUGH OUR FREQUENTLY ASKED
-          <br />
-          QUESTIONS BELOW
+          GO THROUGH OUR FREQUENTLY ASKED QUESTIONS BELOW
         </h2>
+      </div>
 
-        {/* FAQ Items */}
-        <div className="space-y-4">
+      {/* FAQ Items - Narrower Container */}
+      <div className="max-w-2xl mx-auto px-2 md:px-4">
+        <div className="space-y-3 md:space-y-4">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="rounded-2xl overflow-hidden transition-all duration-300"
+              className="rounded-xl md:rounded-2xl overflow-hidden transition-all duration-300"
               style={{
                 background:
                   openIndex === index
@@ -74,13 +74,13 @@ export default function FaqSection() {
               {/* Question Header */}
               <button
                 onClick={() => toggleFaq(index)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-opacity-80 transition-all duration-600"
+                className="w-full flex items-center justify-between p-3 md:p-4 text-left hover:bg-opacity-80 transition-all duration-600"
               >
-                <h3 className="text-lg md:text-xl font-bold text-white pr-4">
+                <h3 className="text-base md:text-xl font-bold text-white pr-2 md:pr-4">
                   {faq.question}
                 </h3>
                 <div
-                  className="flex-shrink-0 text-white text-2xl font-bold transition-transform duration-600"
+                  className="flex-shrink-0 text-white text-xl md:text-2xl font-bold transition-transform duration-600"
                   style={{
                     transform:
                       openIndex === index ? "rotate(45deg)" : "rotate(0deg)",
@@ -99,9 +99,9 @@ export default function FaqSection() {
                 }}
               >
                 <div className="overflow-hidden">
-                  <div className="px-6 pb-6 space-y-4">
+                  <div className="px-3 md:px-4 pb-3 md:pb-4 space-y-3 md:space-y-4">
                     {/* Answer Text */}
-                    <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                    <p className="text-gray-300 text-sm md:text-lg leading-relaxed">
                       {faq.answer}
                     </p>
 
@@ -109,10 +109,10 @@ export default function FaqSection() {
                     {faq.videoId && (
                       <div className="w-full">
                         <div
-                          className="relative aspect-video rounded-lg overflow-hidden"
+                          className="relative aspect-video rounded-md md:rounded-lg overflow-hidden"
                           style={{
-                            border: "2px solid rgba(1, 141, 251, 0.3)",
-                            boxShadow: "0 0 20px rgba(1, 141, 251, 0.1)",
+                            border: "1px solid rgba(1, 141, 251, 0.3)",
+                            boxShadow: "0 0 15px rgba(1, 141, 251, 0.1)",
                           }}
                         >
                           <WistiaPlayer

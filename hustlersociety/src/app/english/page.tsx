@@ -6,15 +6,19 @@ import ApplySection from "../components/ApplySection";
 import InfoSection from "../components/InfoSection";
 import TestimonialSection from "../components/TestimonalSection";
 import GallerySection from "../components/GallerySectionEnglish";
+import CtaButtonComponent from "../components/CtaButtonComponent";
 
 export default function EnglishPage() {
   return (
-    <main>
+    <main className="bg-black">
       <HeroEnglish />
       {/* Add more sections here as you build out your English content */}
       <ApplySection />
       <InfoSection />
+      <CtaButtonComponent />
+
       <TestimonialSection />
+      <CtaButtonComponent />
       <GallerySection />
     </main>
   );

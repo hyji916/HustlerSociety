@@ -22,19 +22,28 @@ export default function TimerSection() {
   }, [minutes, seconds]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 py-12 bg-black">
+    <section
+      className="h-[75vh] md:min-h-screen flex items-center justify-center px-4 py-6 md:py-12"
+      style={{
+        backgroundImage: `url('/backgroundpaper.png')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundColor: "#0a0a0a",
+      }}
+    >
       <div className="max-w-5xl w-full text-center">
         {/* Congrats Badge */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-3 md:mb-6">
           <div
-            className="inline-flex items-center gap-2 px-6 py-2 rounded-full"
+            className="inline-flex flex-row items-center gap-1 md:gap-2 px-3 md:px-6 py-1.5 md:py-2 rounded-full"
             style={{
               background: "rgba(60, 60, 60, 0.8)",
-              border: "2px solid rgba(255, 255, 255, 0.3)",
+              border: "2px solid rgba( 60, 60, 60, 0.8)",
             }}
           >
             <span
-              className="text-base font-bold uppercase tracking-wide px-4 py-1 rounded-full"
+              className="text-xs md:text-base font-bold uppercase tracking-wide px-2 md:px-4 py-0.5 md:py-1 rounded-full whitespace-nowrap"
               style={{
                 color: "white",
                 background: "#018DFB",
@@ -43,21 +52,19 @@ export default function TimerSection() {
             >
               CONGRATS
             </span>
-            <span className="text-white text-base font-medium">
+            <span className="text-white text-xs md:text-base font-medium whitespace-nowrap">
               YOUR APPLICATION HAS BEEN
             </span>
-            <span className="text-white text-base font-bold uppercase">
+            <span className="text-white text-xs md:text-base font-bold uppercase whitespace-nowrap">
               APPROVED!
             </span>
           </div>
         </div>
 
         {/* Main Headline */}
-        <h1 className="text-5xl font-extrabold text-white mb-8 leading-tight">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white mb-4 md:mb-8 leading-tight px-2">
           <span style={{ color: "#018DFB" }}>ATTENTION:</span>{" "}
-          <span>YOU ARE GOING TO</span>
-          <br />
-          <span>RECEIVE A </span>
+          <span>YOU ARE GOING TO RECEIVE A </span>
           <Highlighter
             action="underline"
             color="#018DFB"
@@ -67,47 +74,45 @@ export default function TimerSection() {
           >
             PHONE CALL
           </Highlighter>
-          <span> FROM MY</span>
-          <br />
-          <span>TEAM IN THE NEXT</span>
+          <span> FROM MY TEAM IN THE NEXT</span>
         </h1>
 
         {/* Countdown Timer */}
-        <div className="flex items-center justify-center gap-4 mb-4">
+        <div className="flex items-center justify-center gap-2 md:gap-4 mb-3 md:mb-6">
           {/* Minutes */}
           <div className="flex flex-col items-center">
-            <div className="text-8xl font-bold text-white tabular-nums">
+            <div className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tabular-nums">
               {String(minutes).padStart(2, "0")}
             </div>
-            <div className="text-gray-400 text-base mt-2 uppercase tracking-wide">
+            <div className="text-gray-400 text-xs md:text-base mt-1 md:mt-2 tracking-wide">
               Minutes
             </div>
           </div>
 
           {/* Colon */}
-          <div className="text-8xl font-bold text-white mb-8">
+          <div className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-8">
             :
           </div>
 
           {/* Seconds */}
           <div className="flex flex-col items-center">
-            <div className="text-8xl font-bold text-white tabular-nums">
+            <div className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tabular-nums">
               {String(seconds).padStart(2, "0")}
             </div>
-            <div className="text-gray-400 text-base mt-2 uppercase tracking-wide">
+            <div className="text-gray-400 text-xs md:text-base mt-1 md:mt-2 tracking-wide">
               Seconds
             </div>
           </div>
         </div>
 
         {/* Video Instruction */}
-        <p className="text-white text-lg mb-6">
+        <p className="text-white text-base md:text-lg mb-3 md:mb-6 px-2">
           Watch this{" "}
           <span
-            className="font-bold px-3 py-1 rounded"
+            className="font-bold px-2 py-0.5 rounded"
             style={{
-              background: "rgba(255, 255, 255, 0.2)",
-              border: "1px solid rgba(255, 255, 255, 0.3)",
+              background: "white",
+              color: "black",
             }}
           >
             2 minute video
@@ -116,12 +121,12 @@ export default function TimerSection() {
         </p>
 
         {/* Video Player */}
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-3xl mx-auto px-2">
           <div
-            className="relative aspect-video rounded-2xl overflow-hidden"
+            className="relative aspect-video rounded-lg md:rounded-2xl overflow-hidden"
             style={{
-              border: "4px solid rgba(1, 141, 251, 0.3)",
-              boxShadow: "0 0 30px rgba(1, 141, 251, 0.2)",
+              border: "2px solid rgba(1, 141, 251, 0.3)",
+              boxShadow: "0 0 20px rgba(1, 141, 251, 0.2)",
             }}
           >
             <WistiaPlayer media-id="z3z253lf9h" className="w-full h-full" />
