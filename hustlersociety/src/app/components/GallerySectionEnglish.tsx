@@ -31,19 +31,16 @@ export default function GallerySection() {
               display: "inline-block",
             }}
           >
-            See What&apos;s Possible
-          </span>{" "}
+            IF THEIR HUSTLE PAID OFF
+          </span>
+          <br />
           <span style={{ whiteSpace: "nowrap" }}>
-            <span>at&nbsp;</span>
+            <span>WHY CAN&apos;T&nbsp;</span>
             <span style={{ color: "#dc2626", WebkitTextFillColor: "#dc2626" }}>
-              The Lab
+              YOURS?
             </span>
           </span>
         </h2>
-        <p className="text-gray-400 text-sm md:text-base mb-6">
-          A glimpse of past productions, events, and creative projects hosted in
-          our space.
-        </p>
 
         <div
           className="relative"

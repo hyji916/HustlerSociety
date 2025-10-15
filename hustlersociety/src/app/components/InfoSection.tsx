@@ -53,7 +53,7 @@ const InfoSection = () => {
         }
       `}</style>
 
-      <section className="bg-black text-white py-0 md:py-0 px-5 md:px-12 space-y-8">
+      <section className="bg-black text-white py-0 md:py-0 px-5 md:px-12 space-y-8 pb-6 md:pb-8">
         {infoBlocks.map((info, index) => (
           <div key={index} className="animate-fadeIn">
             {/* Desktop View */}

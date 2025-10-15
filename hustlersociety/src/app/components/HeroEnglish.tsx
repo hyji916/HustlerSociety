@@ -1,6 +1,5 @@
 "use client";
 
-import { useCallback } from "react";
 import WistiaPlayer from "./WistiaPlayer";
 
 export default function HeroEnglish() {
@@ -28,23 +27,21 @@ export default function HeroEnglish() {
   //   };
   // }, []);
 
-  const scrollToCalendly = useCallback(() => {
-    if (typeof document !== "undefined") {
-      const bookingSection = document.querySelector(".ghl-booking-widget");
-      if (bookingSection) {
-        bookingSection.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-        });
-      }
+  const scrollToApplySection = () => {
+    const applySection = document.getElementById("apply-section");
+    if (applySection) {
+      applySection.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
     }
-  }, []);
+  };
 
   return (
     <section
       className="relative overflow-hidden"
       style={{
-        backgroundImage: `url('/backgroundpaper.png')`,
+        backgroundImage: `url('/backgroundpaper.PNG')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -54,45 +51,20 @@ export default function HeroEnglish() {
     >
       {/* Brand logo and congrats bar at top */}
       <div className="relative z-10 flex flex-col items-center pt-6 md:pt-14">
-        {/* <Image
-          src="/hustlersocietytransparentlogo.png"
-          alt="Hustler Society Logo"
-          width={120}
-          height={120}
-          className="h-16 md:h-20 lg:h-24 w-auto"
-          style={{ objectFit: "contain" }}
-          priority
-        /> */}
-        {/* Congratulations bar - moved up for mobile */}
-        {/* <div
-          className="inline-flex items-center gap-2 px-6 py-2 rounded-full mt-0 mb-0 md:mb-3"
-          style={{
-            background: "rgba(220, 38, 38, 0.15)",
-            border: "1px solid rgba(220, 38, 38, 0.3)",
-          }}
-        >
-          <div
-            className="w-2 h-2 rounded-full"
-            style={{ background: "#dc2626" }}
-          />
-          <span className="text-gray-300 text-sm md:text-base font-medium">
-            Congrats! this free training is now yours:
-          </span>
-        </div> */}
         <div
-          className="inline-flex items-center gap-2 px-6 py-2 rounded-full mt-2 mb-0 md:mb-3 md:px-10 lg:px-12"
+          className="inline-flex items-center gap-2 px-6 py-2 rounded-full mt-2 mb-0 md:mb-3 md:px-10 lg:px-10"
           style={{
             background: "rgba(220, 38, 38, 0.15)",
             border: "1px solid rgba(220, 38, 38, 0.3)",
             maxWidth: "90%",
           }}
         >
-          <div
+          {/* <div
             className="w-2 h-2 rounded-full"
             style={{ background: "#dc2626" }}
-          />
-          <span className="text-gray-300 text-sm md:text-base font-medium text-center">
-            Congrats! this free training is now yours:
+          /> */}
+          <span className="text-white text-sm md:text-base font-bold text-center">
+            Congrats! This free training is now yours:
           </span>
         </div>
       </div>
@@ -119,9 +91,8 @@ export default function HeroEnglish() {
 
         {/* Video prompt */}
         <p
-          className="text-white text-center italic font-semibold whitespace-nowrap"
+          className="text-lg text-white md:text-xl text-center italic font-semibold whitespace-nowrap"
           style={{
-            fontSize: "20px",
             marginTop: "-8px",
             marginBottom: "16px",
             letterSpacing: "-0.01em",
@@ -152,7 +123,7 @@ export default function HeroEnglish() {
 
         {/* CTA Button */}
         <button
-          onClick={scrollToCalendly}
+          onClick={scrollToApplySection}
           className="text-base md:text-xl font-bold py-2 px-16 rounded-full shadow-2xl transition hover:opacity-90 cursor-pointer border-none mb-4 uppercase tracking-tight"
           style={{
             background: "white",

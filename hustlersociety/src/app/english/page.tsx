@@ -7,6 +7,7 @@ import InfoSection from "../components/InfoSection";
 import TestimonialSection from "../components/TestimonalSection";
 import GallerySection from "../components/GallerySectionEnglish";
 import CtaButtonComponent from "../components/CtaButtonComponent";
+import Footer from "../components/Footer";
 
 export default function EnglishPage() {
   return (
@@ -16,10 +17,11 @@ export default function EnglishPage() {
       <ApplySection />
       <InfoSection />
       <CtaButtonComponent />
-
       <TestimonialSection />
       <CtaButtonComponent />
       <GallerySection />
+      <CtaButtonComponent />
+      <Footer />
     </main>
   );
 }
