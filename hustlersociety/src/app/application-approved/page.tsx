@@ -17,7 +17,7 @@ export default function ApplicationApprovedPage() {
         <h2 className="text-xl md:text-3xl lg:text-4xl font-extrabold text-white text-center mb-0 px-4 pt-10">
           <Highlighter
             action="underline"
-            color="#018DFB"
+            color="#dc2626"
             strokeWidth={8}
             animationDuration={800}
             padding={0}

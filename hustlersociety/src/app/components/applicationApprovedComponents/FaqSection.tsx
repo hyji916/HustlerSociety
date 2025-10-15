@@ -45,7 +45,7 @@ export default function FaqSection() {
         <h2 className="text-xl md:text-3xl lg:text-4xl font-extrabold text-white text-center mb-6 md:mb-12 leading-tight">
           <Highlighter
             action="underline"
-            color="#018DFB"
+            color="#dc2626"
             strokeWidth={8}
             animationDuration={800}
             padding={0}
