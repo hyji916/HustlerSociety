@@ -16,6 +16,7 @@ const ApplySection = () => {
   const [phoneCommitment, setPhoneCommitment] = useState("");
   const [showPhoneError, setShowPhoneError] = useState(false);
   const [errors, setErrors] = useState({
+    email: false,
     firstName: false,
     lastName: false,
     phone: false,
@@ -35,20 +36,45 @@ const ApplySection = () => {
     setShowForm(true);
   };
 
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhoneNumber = (phone: string) => {
+    const digitsOnly = phone.replace(/\D/g, '');
+    return digitsOnly.length === 10;
+  };
+
+  const formatPhoneNumber = (value: string) => {
+    const digitsOnly = value.replace(/\D/g, '').slice(0, 10);
+    if (digitsOnly.length <= 3) {
+      return digitsOnly;
+    } else if (digitsOnly.length <= 6) {
+      return `(${digitsOnly.slice(0, 3)}) ${digitsOnly.slice(3)}`;
+    } else {
+      return `(${digitsOnly.slice(0, 3)}) ${digitsOnly.slice(3, 6)}-${digitsOnly.slice(6)}`;
+    }
+  };
+
   const handleClose = () => {
     setShowForm(false);
   };
 
   const handleSubmit = useCallback(() => {
     if (formStep === 1) {
-      if (email) {
+      if (email && validateEmail(email)) {
         setFormStep(2);
+        setErrors({ ...errors, email: false });
+      } else {
+        setErrors({ ...errors, email: true });
       }
     } else if (formStep === 2) {
       const newErrors = {
+        email: false,
         firstName: !firstName,
         lastName: !lastName,
-        phone: !phoneNumber,
+        phone: !phoneNumber || !validatePhoneNumber(phoneNumber),
       };
       setErrors(newErrors);
 
@@ -81,7 +107,7 @@ const ApplySection = () => {
   const handleBack = useCallback(() => {
     if (formStep === 2) {
       setFormStep(1);
-      setErrors({ firstName: false, lastName: false, phone: false });
+      setErrors({ email: false, firstName: false, lastName: false, phone: false });
     } else if (formStep === 3) {
       setFormStep(2);
     } else if (formStep === 4) {
@@ -114,11 +140,19 @@ const ApplySection = () => {
               <label className="block text-sm font-medium text-white mb-2">
                 1. What&apos;s a good email to reach you at?*
               </label>
+              {errors.email && (
+                <div className="bg-red-950 border border-red-800 text-red-200 px-3 py-2 rounded mb-2 text-sm flex items-center gap-2">
+                  <span>⚠</span> Please enter a valid email address
+                </div>
+              )}
               <input
                 type="email"
                 placeholder="name@example.com"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setErrors({ ...errors, email: false });
+                }}
                 className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-red-900 focus:outline-none focus:border-red-600 transition-colors"
               />
             </div>
@@ -197,7 +231,7 @@ const ApplySection = () => {
               </label>
               {errors.phone && (
                 <div className="bg-red-950 border border-red-800 text-red-200 px-3 py-2 rounded mb-2 text-sm flex items-center gap-2">
-                  <span>⚠</span> Please fill this in
+                  <span>⚠</span> Please enter a valid 10-digit phone number
                 </div>
               )}
               <div className="flex items-center gap-2 border-b-2 border-red-900 pb-3">
@@ -208,7 +242,8 @@ const ApplySection = () => {
                   placeholder="(201) 555-0123"
                   value={phoneNumber}
                   onChange={(e) => {
-                    setPhoneNumber(e.target.value);
+                    const formatted = formatPhoneNumber(e.target.value);
+                    setPhoneNumber(formatted);
                     setErrors({ ...errors, phone: false });
                   }}
                   className="flex-1 bg-black text-red-900 placeholder-red-900 focus:outline-none"
