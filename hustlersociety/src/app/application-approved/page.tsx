@@ -2,6 +2,7 @@ import FaqSection from "../components/applicationApprovedComponents/FaqSection";
 import TimerHeader from "../components/applicationApprovedComponents/TimerHeader";
 import TimerSection from "../components/applicationApprovedComponents/TimerSection";
 import CtaButtonComponent from "../components/CtaButtonComponent";
+import Footer from "../components/Footer";
 import GallerySection from "../components/GallerySectionEnglish";
 import InfoSection from "../components/InfoSection";
 import TestimonialSection from "../components/TestimonalSection";
@@ -30,10 +31,9 @@ export default function ApplicationApprovedPage() {
           <InfoSection />
         </div>
         <TestimonialSection />
-        <div className="py-10 md:py-12">
-          <CtaButtonComponent />
-        </div>
+        {/* <div className="py-10 md:py-12"></div> */}
         <GallerySection />
+        <Footer />
       </div>
     </div>
   );

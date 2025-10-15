@@ -1,21 +1,19 @@
 "use client";
 export default function CtaButtonComponent() {
-  const scrollToCalendly = () => {
-    const bookingSection = document.querySelector(".ghl-booking-widget");
-    if (bookingSection) {
-      bookingSection.scrollIntoView({
+  const scrollToApplySection = () => {
+    const applySection = document.getElementById("apply-section");
+    if (applySection) {
+      applySection.scrollIntoView({
         behavior: "smooth",
         block: "center",
       });
     }
   };
-  {
-    /* Apply CTA Button - Hero Style */
-  }
+
   return (
-    <div className="max-w-2xl mx-auto  text-center animate-fadeIn">
+    <div className="max-w-2xl mx-auto text-center animate-fadeIn">
       <button
-        onClick={scrollToCalendly}
+        onClick={scrollToApplySection}
         className="text-base md:text-xl font-bold py-2 px-16 rounded-full shadow-2xl transition hover:opacity-90 cursor-pointer border-none mb-4 uppercase tracking-tight"
         style={{
           background: "white",
@@ -45,7 +43,7 @@ export default function CtaButtonComponent() {
           ))}
         </div>
         <span className="text-gray-400 text-sm">
-          Join Over <strong className="text-white">300+ People</strong>{" "}
+          Join Over <strong className="text-white">100+ People</strong>{" "}
           Worldwide
         </span>
       </div>

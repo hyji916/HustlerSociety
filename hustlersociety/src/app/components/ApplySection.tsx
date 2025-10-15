@@ -42,18 +42,21 @@ const ApplySection = () => {
   };
 
   const validatePhoneNumber = (phone: string) => {
-    const digitsOnly = phone.replace(/\D/g, '');
+    const digitsOnly = phone.replace(/\D/g, "");
     return digitsOnly.length === 10;
   };
 
   const formatPhoneNumber = (value: string) => {
-    const digitsOnly = value.replace(/\D/g, '').slice(0, 10);
+    const digitsOnly = value.replace(/\D/g, "").slice(0, 10);
     if (digitsOnly.length <= 3) {
       return digitsOnly;
     } else if (digitsOnly.length <= 6) {
       return `(${digitsOnly.slice(0, 3)}) ${digitsOnly.slice(3)}`;
     } else {
-      return `(${digitsOnly.slice(0, 3)}) ${digitsOnly.slice(3, 6)}-${digitsOnly.slice(6)}`;
+      return `(${digitsOnly.slice(0, 3)}) ${digitsOnly.slice(
+        3,
+        6
+      )}-${digitsOnly.slice(6)}`;
     }
   };
 
@@ -102,12 +105,26 @@ const ApplySection = () => {
         setShowPhoneError(true);
       }
     }
-  }, [formStep, email, firstName, lastName, phoneNumber, budget, phoneCommitment, router]);
+  }, [
+    formStep,
+    email,
+    firstName,
+    lastName,
+    phoneNumber,
+    budget,
+    phoneCommitment,
+    router,
+  ]);
 
   const handleBack = useCallback(() => {
     if (formStep === 2) {
       setFormStep(1);
-      setErrors({ email: false, firstName: false, lastName: false, phone: false });
+      setErrors({
+        email: false,
+        firstName: false,
+        lastName: false,
+        phone: false,
+      });
     } else if (formStep === 3) {
       setFormStep(2);
     } else if (formStep === 4) {
@@ -483,45 +500,52 @@ const ApplySection = () => {
         }
       `}</style>
 
-      <div className="bg-black px-4 py-16 flex items-center justify-center">
-        <div className="w-full max-w-2xl">
-          <h2 className="text-white text-2xl md:text-3xl font-extrabold text-center mb-12">
+      <div
+        id="apply-section"
+        className="bg-black px-16 py-16 flex items-center justify-center"
+      >
+        <div className="w-full max-w-sm">
+          <h2 className="text-white text-3xl md:text-3xl font-extrabold text-center mb-12">
             APPLY DOWN BELOW..
           </h2>
 
           {!isMobile && (
-            <div className="border-2 border-white p-12 relative min-h-[640px] flex items-center justify-center">
+            <div className="border-2 border-white p-12 relative min-h-[480px] flex flex-col justify-between">
               <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-white -translate-x-1 -translate-y-1" />
               <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-white translate-x-1 -translate-y-1" />
               <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-white -translate-x-1 translate-y-1" />
               <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white translate-x-1 translate-y-1" />
 
-              <div className="w-full max-w-md">
+              <div className="w-full flex-1 flex flex-col justify-between">
                 {!showForm ? (
-                  <div className="text-center space-y-8 animate-fadeIn">
-                    <div>
-                      <h3 className="text-white text-2xl font-bold mb-2">
-                        Apply To Work With Me Below
-                      </h3>
-                      <p className="text-gray-400 text-lg">
-                        Join over 300+ brand scalers
-                      </p>
+                  <>
+                    <div className="flex-1 flex items-center justify-center">
+                      <div className="text-center animate-fadeIn">
+                        <h3 className="text-white text-2xl font-bold mb-2">
+                          Apply To Work With Me Below
+                        </h3>
+                        <p className="text-gray-400 text-lg">
+                          Join over 100+ Hustlers
+                        </p>
+                      </div>
                     </div>
 
-                    <button
-                      onClick={handleApplyClick}
-                      className="w-full bg-white text-black font-bold py-4 rounded-lg hover:bg-gray-100 transition-colors"
-                    >
-                      Apply Now
-                    </button>
+                    <div className="space-y-4">
+                      <button
+                        onClick={handleApplyClick}
+                        className="w-full bg-white text-black font-bold py-4 rounded-lg hover:bg-gray-100 transition-colors"
+                      >
+                        Apply Now
+                      </button>
 
-                    <p className="text-gray-500 text-sm flex items-center justify-center gap-2">
-                      <span className="inline-block w-4 h-4 border border-gray-500 rounded-full flex items-center justify-center text-xs">
-                        ⏱
-                      </span>
-                      Takes 30 sec
-                    </p>
-                  </div>
+                      <p className="text-gray-500 text-sm flex items-center justify-center gap-2">
+                        <span className="inline-block w-4 h-4 border border-gray-500 rounded-full flex items-center justify-center text-xs">
+                          ⏱
+                        </span>
+                        Takes 30 sec
+                      </p>
+                    </div>
+                  </>
                 ) : (
                   ApplyForm
                 )}
@@ -531,22 +555,22 @@ const ApplySection = () => {
 
           {isMobile && (
             <>
-              <div className="border-2 border-white p-8 relative min-h-[800px] flex items-center justify-center">
+              <div className="border-2 border-white p-8 relative min-h-[480px] flex flex-col justify-between">
                 <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-white -translate-x-1 -translate-y-1" />
                 <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-white translate-x-1 -translate-y-1" />
                 <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-white -translate-x-1 translate-y-1" />
                 <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white translate-x-1 translate-y-1" />
 
-                <div className="text-center space-y-6 w-full">
-                  <div>
+                <div className="flex-1 flex items-center justify-center">
+                  <div className="text-center w-full">
                     <h3 className="text-white text-xl font-bold mb-2">
                       Apply To Work With Me Below
                     </h3>
-                    <p className="text-gray-400">
-                      Join over 300+ brand scalers
-                    </p>
+                    <p className="text-gray-400">Join over 100+ Hustlers</p>
                   </div>
+                </div>
 
+                <div className="space-y-4">
                   <button
                     onClick={handleApplyClick}
                     className="w-full bg-white text-black font-bold py-4 rounded-lg hover:bg-gray-100 transition-colors"
@@ -574,9 +598,7 @@ const ApplySection = () => {
                     </button>
                   </div>
                   <div className="flex-1 flex items-start justify-center px-6 pb-12 pt-4">
-                    <div className="w-full max-w-md">
-                      {ApplyForm}
-                    </div>
+                    <div className="w-full max-w-md">{ApplyForm}</div>
                   </div>
                 </div>
               )}

@@ -25,7 +25,7 @@ export default function TimerSection() {
     <section
       className="h-[75vh] md:min-h-screen flex items-center justify-center px-4 py-6 md:py-12"
       style={{
-        backgroundImage: `url('/backgroundpaper.png')`,
+        backgroundImage: `url('/backgroundpaper.PNG')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
