@@ -1,6 +1,5 @@
 "use client";
 
-import { useCallback } from "react";
 import WistiaPlayer from "./WistiaPlayer";
 
 export default function HeroEnglish() {

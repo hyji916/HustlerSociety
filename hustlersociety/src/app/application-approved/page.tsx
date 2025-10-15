@@ -1,7 +1,6 @@
 import FaqSection from "../components/applicationApprovedComponents/FaqSection";
 import TimerHeader from "../components/applicationApprovedComponents/TimerHeader";
 import TimerSection from "../components/applicationApprovedComponents/TimerSection";
-import CtaButtonComponent from "../components/CtaButtonComponent";
 import Footer from "../components/Footer";
 import GallerySection from "../components/GallerySectionEnglish";
 import InfoSection from "../components/InfoSection";

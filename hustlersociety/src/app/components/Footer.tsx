@@ -42,21 +42,21 @@ export default function Footer() {
         {/* Facebook Disclaimer */}
         <div className="text-center max-w-2xl mx-auto space-y-4 text-sm text-gray-400">
           <p>
-            <span className="italic">Facebook disclaimer:</span> "This site is
-            not a part of the Facebook website or Facebook Inc. Additionally,
+            <span className="italic">Facebook disclaimer:</span> &quot;This site
+            is not a part of the Facebook website or Facebook Inc. Additionally,
             this site is NOT endorsed by Facebook in any way. Facebook is a
-            trademark of Facebook, Inc."
+            trademark of Facebook, Inc.&quot;
           </p>
 
           {/* Income Disclaimer */}
           <p>
-            <span className="italic">Income disclaimer:</span> "Any financial
-            numbers referenced here, or on any of our sites or emails, are
-            simply estimates, projections, or past results and should not be
+            <span className="italic">Income disclaimer:</span> &quot;Any
+            financial numbers referenced here, or on any of our sites or emails,
+            are simply estimates, projections, or past results and should not be
             considered exact, actual, or as a promise of potential earnings. All
             numbers are illustrative only. Your results will depend on many
             factors, including your background, experience, and work ethic.
-            There are NO guarantees of success or income."
+            There are NO guarantees of success or income.&quot;
           </p>
 
           {/* Age Disclaimer */}
