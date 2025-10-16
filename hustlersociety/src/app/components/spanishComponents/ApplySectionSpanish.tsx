@@ -3,9 +3,8 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Highlighter } from "@/components/ui/highlighter";
 
-const ApplySection = () => {
+const ApplySectionSpanish = () => {
   const router = useRouter();
   const [showForm, setShowForm] = useState(false);
   const [formStep, setFormStep] = useState(1);
@@ -153,19 +152,8 @@ const ApplySection = () => {
         </div>
 
         {formStep === 1 && (
-          <div className="flex flex-col h-full justify-between">
-            {/* Image Section */}
-            <div className="relative w-full h-48 mb-6">
-              <Image
-                src="/car-red.jpg" // change to your own hosted image path
-                alt="Red supercar"
-                fill
-                className="object-cover rounded-t-lg"
-              />
-            </div>
-
-            {/* Form Section */}
-            <div className="flex-1">
+          <>
+            <div>
               <label className="block text-sm font-medium text-white mb-2">
                 1. What&apos;s a good email to reach you at?*
               </label>
@@ -182,103 +170,119 @@ const ApplySection = () => {
                   setEmail(e.target.value);
                   setErrors({ ...errors, email: false });
                 }}
+                className="w-full px-4 py-3 bg-zinc-900 border border-zinc-700 rounded-lg text-white placeholder-red-900 focus:outline-none focus:border-red-600 transition-colors"
+              />
+            </div>
+            <button
+              onClick={handleSubmit}
+              className="w-full bg-white text-black font-bold py-4 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              OK
+            </button>
+          </>
+        )}
+
+        {formStep === 2 && (
+          <>
+            <div className="mb-6">
+              <Image
+                src="https://images.unsplash.com/photo-1617654112368-307921291f42?w=800&auto=format&fit=crop"
+                alt="Luxury car"
+                width={800}
+                height={300}
+                className="w-full h-48 object-cover rounded-t-lg"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-white mb-2">
+                2. And your name and phone number?*
+              </label>
+            </div>
+
+            <div>
+              <label className="block text-xs text-white mb-1">
+                First name *
+              </label>
+              {errors.firstName && (
+                <div className="bg-red-950 border border-red-800 text-red-200 px-3 py-2 rounded mb-2 text-sm flex items-center gap-2">
+                  <span>⚠</span> Please fill this in
+                </div>
+              )}
+              <input
+                type="text"
+                placeholder="Jane"
+                value={firstName}
+                onChange={(e) => {
+                  setFirstName(e.target.value);
+                  setErrors({ ...errors, firstName: false });
+                }}
                 className="w-full px-4 py-3 bg-black border-b-2 border-red-900 text-red-900 placeholder-red-900 focus:outline-none focus:border-red-600 transition-colors"
               />
             </div>
 
-            {/* Bottom Button */}
-            <div className="mt-6">
-              <button
-                onClick={handleSubmit}
-                className="w-full bg-white text-black font-bold py-4 rounded-lg hover:bg-gray-100 transition-colors"
-              >
-                OK
-              </button>
-            </div>
-          </div>
-        )}
-
-        {formStep === 2 && (
-          <div className="flex flex-col h-full justify-between">
-            {/* Image Section */}
-            <div className="relative w-full h-48 mb-6">
-              <Image
-                src="/car-black.jpg" // another step image if you have one
-                alt="Luxury car"
-                fill
-                className="object-cover rounded-t-lg"
+            <div>
+              <label className="block text-xs text-white mb-1">
+                Last name *
+              </label>
+              {errors.lastName && (
+                <div className="bg-red-950 border border-red-800 text-red-200 px-3 py-2 rounded mb-2 text-sm flex items-center gap-2">
+                  <span>⚠</span> Please fill this in
+                </div>
+              )}
+              <input
+                type="text"
+                placeholder="Smith"
+                value={lastName}
+                onChange={(e) => {
+                  setLastName(e.target.value);
+                  setErrors({ ...errors, lastName: false });
+                }}
+                className="w-full px-4 py-3 bg-black border-b-2 border-red-900 text-red-900 placeholder-red-900 focus:outline-none focus:border-red-600 transition-colors"
               />
             </div>
 
-            {/* Form Section */}
-            <div className="flex-1 space-y-4">
-              <label className="block text-sm font-medium text-white mb-2">
-                2. And your name and phone number?*
+            <div>
+              <label className="block text-xs text-white mb-1">
+                Phone number *
               </label>
-
-              <div>
-                <label className="block text-xs text-white mb-1">
-                  First name *
-                </label>
-                <input
-                  type="text"
-                  placeholder="Jane"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  className="w-full px-4 py-3 bg-black border-b-2 border-red-900 text-red-900 placeholder-red-900 focus:outline-none focus:border-red-600"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs text-white mb-1">
-                  Last name *
-                </label>
-                <input
-                  type="text"
-                  placeholder="Smith"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  className="w-full px-4 py-3 bg-black border-b-2 border-red-900 text-red-900 placeholder-red-900 focus:outline-none focus:border-red-600"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs text-white mb-1">
-                  Phone number *
-                </label>
-                <div className="flex items-center gap-2 border-b-2 border-red-900 pb-3">
-                  <span className="text-2xl">🇺🇸</span>
-                  <span className="text-white">▼</span>
-                  <input
-                    type="tel"
-                    placeholder="(201) 555-0123"
-                    value={phoneNumber}
-                    onChange={(e) => {
-                      const formatted = formatPhoneNumber(e.target.value);
-                      setPhoneNumber(formatted);
-                    }}
-                    className="flex-1 bg-black text-red-900 placeholder-red-900 focus:outline-none"
-                  />
+              {errors.phone && (
+                <div className="bg-red-950 border border-red-800 text-red-200 px-3 py-2 rounded mb-2 text-sm flex items-center gap-2">
+                  <span>⚠</span> Please enter a valid 10-digit phone number
                 </div>
+              )}
+              <div className="flex items-center gap-2 border-b-2 border-red-900 pb-3">
+                <span className="text-2xl">🇺🇸</span>
+                <span className="text-white">▼</span>
+                <input
+                  type="tel"
+                  placeholder="(201) 555-0123"
+                  value={phoneNumber}
+                  onChange={(e) => {
+                    const formatted = formatPhoneNumber(e.target.value);
+                    setPhoneNumber(formatted);
+                    setErrors({ ...errors, phone: false });
+                  }}
+                  className="flex-1 bg-black text-red-900 placeholder-red-900 focus:outline-none"
+                />
               </div>
             </div>
 
-            {/* Bottom Buttons */}
-            <div className="flex gap-3 mt-6">
+            <div className="flex gap-3 pt-4">
               <button
                 onClick={handleBack}
-                className="w-16 bg-gray-800 text-white font-bold py-4 rounded-lg hover:bg-gray-700 flex items-center justify-center"
+                className="w-16 bg-gray-800 text-white font-bold py-4 rounded-lg hover:bg-gray-700 transition-colors flex items-center justify-center"
               >
                 ←
               </button>
               <button
                 onClick={handleSubmit}
-                className="flex-1 bg-white text-black font-bold py-4 rounded-lg hover:bg-gray-100"
+                className="flex-1 bg-white text-black font-bold py-4 rounded-lg hover:bg-gray-100 transition-colors"
               >
                 OK
               </button>
             </div>
-          </div>
+          </>
         )}
 
         {formStep === 3 && (
@@ -502,16 +506,7 @@ const ApplySection = () => {
       >
         <div className="w-full max-w-sm">
           <h2 className="text-white text-3xl md:text-3xl font-extrabold text-center mb-12">
-            <Highlighter
-              action="underline"
-              color="#dc2626"
-              strokeWidth={8}
-              animationDuration={800}
-              padding={0}
-            >
-              APPLY
-            </Highlighter>{" "}
-            DOWN BELOW...
+            APPLY DOWN BELOW..
           </h2>
 
           {!isMobile && (
@@ -609,4 +604,4 @@ const ApplySection = () => {
   );
 };
 
-export default ApplySection;
+export default ApplySectionSpanish;

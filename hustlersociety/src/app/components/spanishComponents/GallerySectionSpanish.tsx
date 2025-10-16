@@ -1,6 +1,5 @@
 "use client";
 
-import { Highlighter } from "@/components/ui/highlighter";
 import { Marquee } from "@/components/ui/marquee";
 import Image from "next/image";
 import { useState } from "react";
@@ -14,35 +13,25 @@ const galleryImages = [
   "/backgroundpaper.Png",
 ];
 
-export default function GallerySection() {
+export default function GallerySectionSpanish() {
   const [isPaused, setIsPaused] = useState(false);
 
   return (
     <section className="py-8 md:py-12 text-white relative bg-black">
       <div className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-2xl md:text-3xl font-extrabold mb-2">
-          <span>
-            <span
-              style={{
-                background:
-                  "linear-gradient(90deg, #BDBDBD 0%, #FFFFFF 10%, #FFFFFF 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                display: "inline-block",
-              }}
-            >
-              IF THEIR HUSTLE
-            </span>{" "}
-            <Highlighter
-              action="underline"
-              color="#dc2626"
-              strokeWidth={6}
-              animationDuration={800}
-              padding={0}
-            >
-              PAID OFF
-            </Highlighter>
+          <span
+            style={{
+              background:
+                "linear-gradient(90deg, #BDBDBD 0%, #FFFFFF 10%, #FFFFFF 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              color: "transparent",
+              display: "inline-block",
+            }}
+          >
+            IF THEIR HUSTLE PAID OFF
           </span>
           <br />
           <span style={{ whiteSpace: "nowrap" }}>

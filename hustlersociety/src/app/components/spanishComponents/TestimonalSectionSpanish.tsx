@@ -1,9 +1,8 @@
 "use client";
 
-import { Highlighter } from "@/components/ui/highlighter";
 import React, { useState, useEffect } from "react";
 
-const TestimonialSection = () => {
+const TestimonalSectionSpanish = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -67,16 +66,7 @@ const TestimonialSection = () => {
             </div>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase mb-2">
-            <Highlighter
-              action="underline"
-              color="#dc2626"
-              strokeWidth={6}
-              animationDuration={800}
-              padding={0}
-            >
-              Hear
-            </Highlighter>{" "}
-            What Our Students
+            Hear What Our Students
           </h2>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase">
             Have To Say...
@@ -146,4 +136,4 @@ const TestimonialSection = () => {
   );
 };
 
-export default TestimonialSection;
+export default TestimonalSectionSpanish;
