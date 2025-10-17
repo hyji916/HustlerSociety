@@ -87,11 +87,12 @@ export default function HeroEnglish() {
         >
           <span style={{ width: "100%" }}>
             LEARN THIS{" "}
-            <span
-              style={{ color: "#dc2626", fontStyle: "italic", fontWeight: 900 }}
+            <strong
+              className="italic font-extrabold"
+              style={{ color: "#dc2626" }}
             >
               ONE SKILL
-            </span>{" "}
+            </strong>{" "}
             THAT TOOK ME FROM A BROKE OVERWORKED WAITER TO GENERATING{" "}
             <Highlighter
               action="underline"
@@ -100,14 +101,15 @@ export default function HeroEnglish() {
               animationDuration={800}
               padding={0}
             >
-              8 FIGURES
+              <strong>8 FIGURES</strong>
             </Highlighter>{" "}
             IN{" "}
-            <span
-              style={{ color: "#dc2626", fontStyle: "italic", fontWeight: 900 }}
+            <strong
+              className="italic font-extrabold"
+              style={{ color: "#dc2626" }}
             >
               REMOTE SALES
-            </span>
+            </strong>
           </span>
         </h1>
 
