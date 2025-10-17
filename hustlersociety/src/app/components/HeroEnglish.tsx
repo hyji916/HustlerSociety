@@ -86,14 +86,14 @@ export default function HeroEnglish() {
           }}
         >
           <span style={{ width: "100%", fontWeight: 900 }}>
-            LEARN THIS{" "}
+            LEARN HOW THIS{" "}
             <span
               className="italic"
               style={{ color: "#dc2626", fontWeight: 900 }}
             >
               ONE SKILL
             </span>{" "}
-            THAT TOOK ME FROM A BROKE OVERWORKED WAITER TO GENERATING{" "}
+            TOOK ME FROM A BROKE OVERWORKED WAITER TO GENERATING{" "}
             <Highlighter
               action="underline"
               color="#dc2626"
@@ -108,7 +108,7 @@ export default function HeroEnglish() {
               className="italic"
               style={{ color: "#dc2626", fontWeight: 900 }}
             >
-              REMOTE SALES
+              ONLINE
             </span>
           </span>
         </h1>
