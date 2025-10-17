@@ -86,14 +86,14 @@ export default function HeroEnglish() {
           }}
         >
           <span style={{ width: "100%", fontWeight: 900 }}>
-            LEARN HOW THIS{" "}
+            HOW THIS{" "}
             <span
               className="italic"
               style={{ color: "#dc2626", fontWeight: 900 }}
             >
               ONE SKILL
             </span>{" "}
-            TOOK ME FROM A BROKE OVERWORKED WAITER TO GENERATING{" "}
+            TOOK ME FROM A BROKE TIRED WAITER TO MAKING{" "}
             <Highlighter
               action="underline"
               color="#dc2626"
@@ -103,7 +103,6 @@ export default function HeroEnglish() {
             >
               <span style={{ fontWeight: 900 }}>8 FIGURES</span>
             </Highlighter>{" "}
-            IN{" "}
             <span
               className="italic"
               style={{ color: "#dc2626", fontWeight: 900 }}
