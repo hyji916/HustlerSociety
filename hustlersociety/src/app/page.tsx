@@ -8,6 +8,8 @@ import TestimonialSection from "./components/TestimonalSection";
 import GallerySection from "./components/GallerySectionEnglish";
 import CtaButtonComponent from "./components/CtaButtonComponent";
 import Footer from "./components/Footer";
+import GHLPopupForm from "./components/GHLPopupForm";
+import HeroFirst from "./components/HeroFirst";
 
 type Language = "spanish" | "english";
 
@@ -18,15 +20,16 @@ export default function LandingPage() {
 
   return (
     <main className="bg-black">
-      <HeroEnglish />
+      <HeroFirst />
       {/* Add more sections here as you build out your English content */}
       {/* <ApplySection /> */}
-      <InfoSection />
+      {/* <GHLPopupForm /> */}
+      {/* <InfoSection />
       <CtaButtonComponent />
       <TestimonialSection />
       <CtaButtonComponent />
       <GallerySection />
-      <CtaButtonComponent />
+      <CtaButtonComponent />  */}
       <Footer />
     </main>
   );

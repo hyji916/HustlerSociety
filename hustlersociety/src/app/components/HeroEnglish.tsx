@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { Highlighter } from "@/components/ui/highlighter";
 import WistiaPlayer from "./WistiaPlayer";
 
