@@ -4,9 +4,22 @@ import { useEffect, useState } from "react";
 import { Highlighter } from "@/components/ui/highlighter";
 import WistiaPlayer from "./WistiaPlayer";
 
+// Define a type for Wistia video API object
+interface WistiaVideo {
+  bind: (event: string, handler: (t?: number) => void) => void;
+  duration: () => number;
+}
+
+// Define a type for each queue entry in _wq
+interface WistiaQueueItem {
+  id?: string;
+  onReady?: (video: WistiaVideo) => void;
+}
+
+// Extend window type properly
 declare global {
   interface Window {
-    _wq?: any[];
+    _wq?: WistiaQueueItem[];
   }
 }
 
@@ -16,23 +29,22 @@ export default function HeroEnglish() {
 
   useEffect(() => {
     const setupWistiaPlayer = () => {
+      // Cast safely instead of using 'any'
       const playerElement = document.querySelector(
         'wistia-player[media-id="z3z253lf9h"]'
-      ) as any;
+      ) as HTMLElement & { _video?: WistiaVideo };
 
       if (playerElement && playerElement._video) {
         const video = playerElement._video;
         console.log("🎥 Wistia player found and ready!");
 
-        // Track progress
-        video.bind("timechange", function (t: number) {
+        video.bind("timechange", (t = 0) => {
           const duration = video.duration();
           if (duration > 0) {
             const percent = t / duration;
             const percentRounded = Math.round(percent * 100);
             setWatchedPercent(percentRounded);
 
-            // Unlock when user reaches 95%
             if (percent >= 0.95 && !videoCompleted) {
               console.log("✅ Video 95% complete - unlocking button!");
               setVideoCompleted(true);
@@ -40,18 +52,15 @@ export default function HeroEnglish() {
           }
         });
 
-        // Ensure it unlocks if user reaches the end
-        video.bind("end", function () {
+        video.bind("end", () => {
           console.log("🎬 Video ended - unlocking button!");
           setVideoCompleted(true);
         });
       } else {
-        // Retry if player not ready yet
         setTimeout(setupWistiaPlayer, 500);
       }
     };
 
-    // Delay setup to ensure Wistia has loaded
     const timeout = setTimeout(setupWistiaPlayer, 1000);
     return () => clearTimeout(timeout);
   }, [videoCompleted]);
