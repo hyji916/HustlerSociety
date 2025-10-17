@@ -161,7 +161,7 @@ export default function HeroFirst() {
         }}
         aria-label="Apply now"
       >
-        <strong>Apply Now</strong>
+        <strong>Unlock The Mini Course</strong>
       </button>
 
       {/* --- Social Proof --- */}

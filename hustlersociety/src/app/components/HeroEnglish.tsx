@@ -1,41 +1,70 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Highlighter } from "@/components/ui/highlighter";
 import WistiaPlayer from "./WistiaPlayer";
 
+declare global {
+  interface Window {
+    _wq?: any[];
+  }
+}
+
 export default function HeroEnglish() {
-  // NOTE: Wistia scripts now loaded in layout.tsx instead
-  // Commented out to avoid duplicate script loading which causes "Failed to fetch" errors
-  // useEffect(() => {
-  //   const playerScript = document.createElement("script");
-  //   playerScript.src = "https://fast.wistia.com/player.js";
-  //   playerScript.async = true;
-  //   document.head.appendChild(playerScript);
+  const [videoCompleted, setVideoCompleted] = useState(false);
+  const [watchedPercent, setWatchedPercent] = useState(0);
 
-  //   const embedScript = document.createElement("script");
-  //   embedScript.src = "https://fast.wistia.com/embed/z3z253lf9h.js";
-  //   embedScript.async = true;
-  //   embedScript.type = "module";
-  //   document.head.appendChild(embedScript);
+  useEffect(() => {
+    const setupWistiaPlayer = () => {
+      const playerElement = document.querySelector(
+        'wistia-player[media-id="z3z253lf9h"]'
+      ) as any;
 
-  //   return () => {
-  //     if (playerScript.parentNode) {
-  //       playerScript.parentNode.removeChild(playerScript);
-  //     }
-  //     if (embedScript.parentNode) {
-  //       embedScript.parentNode.removeChild(embedScript);
-  //     }
-  //   };
-  // }, []);
+      if (playerElement && playerElement._video) {
+        const video = playerElement._video;
+        console.log("🎥 Wistia player found and ready!");
+
+        // Track progress
+        video.bind("timechange", function (t: number) {
+          const duration = video.duration();
+          if (duration > 0) {
+            const percent = t / duration;
+            const percentRounded = Math.round(percent * 100);
+            setWatchedPercent(percentRounded);
+
+            // Unlock when user reaches 95%
+            if (percent >= 0.95 && !videoCompleted) {
+              console.log("✅ Video 95% complete - unlocking button!");
+              setVideoCompleted(true);
+            }
+          }
+        });
+
+        // Ensure it unlocks if user reaches the end
+        video.bind("end", function () {
+          console.log("🎬 Video ended - unlocking button!");
+          setVideoCompleted(true);
+        });
+      } else {
+        // Retry if player not ready yet
+        setTimeout(setupWistiaPlayer, 500);
+      }
+    };
+
+    // Delay setup to ensure Wistia has loaded
+    const timeout = setTimeout(setupWistiaPlayer, 1000);
+    return () => clearTimeout(timeout);
+  }, [videoCompleted]);
 
   const scrollToApplySection = () => {
+    if (!videoCompleted) {
+      alert("⏸️ Please finish watching the video before applying!");
+      return;
+    }
+
     const applySection = document.getElementById("apply-section");
     if (applySection) {
-      applySection.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
+      applySection.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   };
 
@@ -51,7 +80,7 @@ export default function HeroEnglish() {
         fontFamily: "Geistmono, Arial, sans-serif",
       }}
     >
-      {/* Brand logo and congrats bar at top */}
+      {/* Header */}
       <div className="relative z-10 flex flex-col items-center pt-6 md:pt-14">
         <div
           className="inline-flex items-center gap-2 px-6 py-2 rounded-full mt-2 mb-0 md:mb-3 md:px-10 lg:px-10"
@@ -61,22 +90,15 @@ export default function HeroEnglish() {
             maxWidth: "90%",
           }}
         >
-          {/* <div
-            className="w-2 h-2 rounded-full"
-            style={{ background: "#dc2626" }}
-          /> */}
           <span className="text-white text-xs md:text-base font-bold text-center">
-            WATCH NOW BEFORE THIS GETS TAKEN DOWN
-            <span role="img" aria-label="double exclamation">
-              ‼️
-            </span>
+            WATCH NOW BEFORE THIS GETS TAKEN DOWN‼️
           </span>
         </div>
       </div>
 
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center justify-start px-4 pt-2 md:pt-1">
-        {/* Hook headline - 1040x88px on desktop, responsive on mobile */}
+        {/* Headline */}
         <h1
           className="custom-hook-headline mb-6"
           style={{
@@ -88,10 +110,7 @@ export default function HeroEnglish() {
         >
           <span style={{ width: "100%", fontWeight: 900 }}>
             HOW THIS{" "}
-            <span
-              className="italic"
-              style={{ color: "#dc2626", fontWeight: 900 }}
-            >
+            <span className="italic" style={{ color: "#dc2626" }}>
               ONE SKILL
             </span>{" "}
             TOOK ME FROM A BROKE TIRED WAITER TO MAKING{" "}
@@ -104,28 +123,21 @@ export default function HeroEnglish() {
             >
               <span style={{ fontWeight: 900 }}>8 FIGURES</span>
             </Highlighter>{" "}
-            <span
-              className="italic"
-              style={{ color: "#dc2626", fontWeight: 900 }}
-            >
+            <span className="italic" style={{ color: "#dc2626" }}>
               ONLINE
             </span>
           </span>
         </h1>
 
-        {/* Video prompt */}
+        {/* Video text */}
         <p
           className="text-lg text-white md:text-xl text-center italic font-semibold whitespace-nowrap"
-          style={{
-            marginTop: "-8px",
-            marginBottom: "16px",
-            letterSpacing: "-0.01em",
-          }}
+          style={{ marginTop: "-8px", marginBottom: "16px" }}
         >
           (Click play on the video below to watch)
         </p>
 
-        {/* Video with border - less wide on desktop */}
+        {/* Video */}
         <div
           className="relative mb-4 custom-video-container"
           style={{
@@ -148,15 +160,29 @@ export default function HeroEnglish() {
         {/* CTA Button */}
         <button
           onClick={scrollToApplySection}
-          className="text-base md:text-xl font-bold py-2 px-16 rounded-full shadow-2xl transition hover:opacity-90 cursor-pointer border-none mb-4 uppercase tracking-tight"
+          disabled={!videoCompleted}
+          className="text-base md:text-xl font-bold py-2 px-16 rounded-full shadow-2xl transition border-none mb-2 uppercase tracking-tight"
           style={{
-            background: "white",
-            color: "black",
+            background: videoCompleted ? "white" : "rgba(255, 255, 255, 0.3)",
+            color: videoCompleted ? "black" : "rgba(0, 0, 0, 0.4)",
+            cursor: videoCompleted ? "pointer" : "not-allowed",
+            opacity: videoCompleted ? 1 : 0.5,
           }}
-          aria-label="Apply now"
         >
-          <strong>Apply Now</strong>
+          {videoCompleted ? "Apply Now" : "Watch Video to Apply"}
         </button>
+
+        {/* Progress feedback */}
+        {!videoCompleted && watchedPercent > 0 && (
+          <p className="text-gray-400 text-sm mb-4">
+            Video progress: {watchedPercent}%
+          </p>
+        )}
+        {videoCompleted && (
+          <p className="text-green-500 text-sm mb-4 font-semibold">
+            ✅ Video completed! Click to apply
+          </p>
+        )}
 
         {/* Social proof */}
         <div className="flex items-center gap-2 mb-12">
@@ -165,7 +191,6 @@ export default function HeroEnglish() {
               <div
                 key={i}
                 className="w-5 h-5 rounded-full border-2 border-gray-900"
-                suppressHydrationWarning
                 style={{
                   background: `linear-gradient(135deg, #${Math.floor(
                     Math.random() * 16777215
@@ -177,7 +202,7 @@ export default function HeroEnglish() {
             ))}
           </div>
           <span className="text-gray-400 text-sm">
-            Join Over <strong className="text-white">100+ Hustlers</strong>{" "}
+            Join Over <strong className="text-white">100+ Hustlers</strong>
           </span>
         </div>
       </div>
