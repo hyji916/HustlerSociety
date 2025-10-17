@@ -1,5 +1,6 @@
 "use client";
 
+import { Highlighter } from "@/components/ui/highlighter";
 import WistiaPlayer from "./WistiaPlayer";
 
 export default function HeroEnglish() {
@@ -63,8 +64,11 @@ export default function HeroEnglish() {
             className="w-2 h-2 rounded-full"
             style={{ background: "#dc2626" }}
           /> */}
-          <span className="text-white text-sm md:text-base font-bold text-center">
-            Congrats! This free training is now yours:
+          <span className="text-white text-xs md:text-base font-bold text-center">
+            WATCH NOW BEFORE THIS GETS TAKEN DOWN
+            <span role="img" aria-label="double exclamation">
+              ‼️
+            </span>
           </span>
         </div>
       </div>
@@ -82,10 +86,28 @@ export default function HeroEnglish() {
           }}
         >
           <span style={{ width: "100%" }}>
-            LEARN HOW ME AND{" "}
-            <span style={{ color: "#dc2626" }}>HUNDREDS OF OTHERS</span> ARE
-            CASHING OUT THIS Q4 USING THIS{" "}
-            <span style={{ color: "#dc2626" }}>ONE SKILL:</span>
+            LEARN THIS{" "}
+            <span
+              style={{ color: "#dc2626", fontStyle: "italic", fontWeight: 900 }}
+            >
+              ONE SKILL
+            </span>{" "}
+            THAT TOOK ME FROM A BROKE OVERWORKED WAITER TO GENERATING{" "}
+            <Highlighter
+              action="underline"
+              color="#dc2626"
+              strokeWidth={4}
+              animationDuration={800}
+              padding={0}
+            >
+              8 FIGURES
+            </Highlighter>{" "}
+            IN{" "}
+            <span
+              style={{ color: "#dc2626", fontStyle: "italic", fontWeight: 900 }}
+            >
+              REMOTE SALES
+            </span>
           </span>
         </h1>
 

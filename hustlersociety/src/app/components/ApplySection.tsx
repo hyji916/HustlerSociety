@@ -505,7 +505,7 @@ const ApplySection = () => {
             <Highlighter
               action="underline"
               color="#dc2626"
-              strokeWidth={8}
+              strokeWidth={6}
               animationDuration={800}
               padding={0}
             >
