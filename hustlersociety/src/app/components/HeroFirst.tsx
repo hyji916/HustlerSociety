@@ -6,6 +6,12 @@ import WistiaPlayer from "./WistiaPlayer";
 
 export default function HeroFirst() {
   const [showPopup, setShowPopup] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Set mounted to true after hydration
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Handle redirect after form submission
   useEffect(() => {
@@ -161,19 +167,28 @@ export default function HeroFirst() {
       {/* --- Social Proof --- */}
       <div className="flex items-center gap-2 mb-12">
         <div className="flex -space-x-2">
-          {[1, 2, 3].map((i) => (
-            <div
-              key={i}
-              className="w-5 h-5 rounded-full border-2 border-gray-900"
-              style={{
-                background: `linear-gradient(135deg, #${Math.floor(
-                  Math.random() * 16777215
-                ).toString(16)} 0%, #${Math.floor(
-                  Math.random() * 16777215
-                ).toString(16)} 100%)`,
-              }}
-            />
-          ))}
+          {mounted
+            ? // Client-side only: random gradients
+              [1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className="w-5 h-5 rounded-full border-2 border-gray-900"
+                  style={{
+                    background: `linear-gradient(135deg, #${Math.floor(
+                      Math.random() * 16777215
+                    ).toString(16)} 0%, #${Math.floor(
+                      Math.random() * 16777215
+                    ).toString(16)} 100%)`,
+                  }}
+                />
+              ))
+            : // SSR placeholder
+              [1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className="w-5 h-5 rounded-full border-2 border-gray-900 bg-gray-700"
+                />
+              ))}
         </div>
         <span className="text-gray-400 text-sm">
           Join Over <strong className="text-white">100+ Hustlers</strong>
