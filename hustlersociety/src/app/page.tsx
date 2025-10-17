@@ -20,7 +20,7 @@ export default function LandingPage() {
     <main className="bg-black">
       <HeroEnglish />
       {/* Add more sections here as you build out your English content */}
-      <ApplySection />
+      {/* <ApplySection /> */}
       <InfoSection />
       <CtaButtonComponent />
       <TestimonialSection />

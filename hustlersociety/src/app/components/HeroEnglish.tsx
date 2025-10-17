@@ -177,8 +177,7 @@ export default function HeroEnglish() {
             ))}
           </div>
           <span className="text-gray-400 text-sm">
-            Join Over <strong className="text-white">100+ People</strong>{" "}
-            Worldwide
+            Join Over <strong className="text-white">100+ Hustlers</strong>{" "}
           </span>
         </div>
       </div>
